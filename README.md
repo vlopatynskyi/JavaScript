@@ -1,2 +1,2 @@
 # study
-My reposetori while learning.
+First GitHub project.
