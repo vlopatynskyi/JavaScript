@@ -9,8 +9,8 @@
 <body>
 
     <form id="add-form">
-        <input type="text" id="input-todo-task" placeholder="Add new task">
-        <button id="add-btn" type="submit">Add</button>
+        <input type="text" id="input-todo-task" placeholder="Add new task" class="input-line">
+        <button id="add-btn" type="submit" class="btn">Add</button>
     </form>
 
      <form id="filter-form">
@@ -29,28 +29,12 @@
         Completed
         </label>
 
-        <button id="filter-btn">Activate filter</button>
+        <button id="filter-btn" class="btn">Activate</button>
     </form>
 
-    <ol id="todo-list"></ol>
+    <ol class="list" id="todo-list"></ol>
 
-<form id="complete-form">
-    
-        <label for="complete-task">Type number of your task</label>
-        <input type="number" name="complete-task" id="complete-task-input" placeholder="1" min="0" >
-         
-        <button id="complete-btn" type="submit">Complete Task</button>
-</form>
-
-<form id="remove-form">
-    
-        <label for="remove-task">Type number of task you need to remove</label>
-        <input type="number" name="remove-task" id="remove-task-input" placeholder="1" min="0" >
-         
-        <button id="remove-btn" type="submit">Remove Task</button>
-</form>
-
-<button id="clear-completed-btn">Clear Completed</button>
+<button id="clear-completed-btn" class="btn">Clear Completed</button>
     <script src="main.js"></script>
     <script src="app.js"></script>
 </body>

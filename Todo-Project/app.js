@@ -2,13 +2,8 @@ const input = document.getElementById("input-todo-task");
 const button = document.getElementById('add-btn');
 const list = document.getElementById('todo-list');
 const form = document.getElementById('add-form');
-const inputIdComplete = document.getElementById('complete-task-input');
-const completeForm = document.getElementById('complete-form');
 const clearBtn = document.getElementById("clear-completed-btn");
 const filterForm = document.getElementById('filter-form');
-const removeForm = document.getElementById('remove-form');
-const inputIdToRemove = document.getElementById('remove-task-input')
-
 
 
 function getFilter() {
@@ -18,13 +13,44 @@ function getFilter() {
 function render(tasks) {
     list.innerHTML = '';
 
-    tasks.forEach(item => {
+    tasks.forEach((item, index) => {
         const li = document.createElement('li');
-
+        const liDelBtn = createDeleteBtn(index);
+        const liCompBtn = createCompleteBtn(index);
         li.textContent = `Task: ${item.text} Status: ${item.completed ? '✅' : '❌'}`;
+        li.appendChild(liDelBtn);
+        li.appendChild(liCompBtn);
 
         list.appendChild(li);
     });
+}
+
+function createDeleteBtn(index) {
+    let button = document.createElement('button');
+    button.textContent = 'Delete';
+    button.classList.add('btn');
+
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        todo.remove(index + 1);
+        render( todo.filter( getFilter() ) );
+    });
+    return button;
+}
+
+function createCompleteBtn(index) {
+    let button = document.createElement('button');
+    button.textContent = 'Complete';
+    button.classList.add('btn');
+
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        todo.complete(index + 1);
+        render( todo.filter( getFilter() ) );
+    });
+    return button;
 }
 
 form.addEventListener('submit', function(event) {
@@ -35,19 +61,6 @@ form.addEventListener('submit', function(event) {
 
     render( todo.filter(getFilter()) );
 
-});
-
-completeForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    if(inputIdComplete.value > 0 && inputIdComplete.value <= todo.tasks.length) {
-    
-        todo.complete(+inputIdComplete.value);
-
-    inputIdComplete.value = '';
-    render( todo.filter(getFilter()) );
-    };
-    
 });
 
 clearBtn.addEventListener('click', function() {
@@ -64,17 +77,10 @@ filterForm.addEventListener('submit', function(event) {
     
 });
 
-removeForm.addEventListener('submit', function(event) {
-    event.preventDefault();
 
-    if(inputIdToRemove.value > 0 && inputIdToRemove.value <= todo.tasks.length) {
-    
-        todo.remove(+inputIdToRemove.value);
 
-    inputIdToRemove.value = '';
-    render( todo.filter(getFilter()) );
-    };
-})
+
+
 
 
 
