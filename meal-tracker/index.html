@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Трекер КБЖВ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <h1 class="app-title"><span>Трекер</span> КБЖВ</h1>
+
+        <form id="meal-form" class="form-grid">
+          <div class="field">
+            <label for="selected-date">Дата</label>
+            <input id="selected-date" name="selected-date" type="date" />
+          </div>
+
+          <div class="field">
+            <label for="meal-name">Назва прийому їжі</label>
+            <input id="meal-name" name="meal-name" type="text" placeholder="Наприклад: Овочевий салат" required />
+          </div>
+
+          <div class="macro-grid">
+            <div class="field">
+              <label for="calories">Калорії</label>
+              <input id="calories" name="calories" type="number" min="0" step="1" placeholder="kcal" required />
+            </div>
+
+            <div class="field">
+              <label for="proteins">Білки</label>
+              <input id="proteins" name="proteins" type="number" min="0" step="0.1" placeholder="г" required />
+            </div>
+
+            <div class="field">
+              <label for="fats">Жири</label>
+              <input id="fats" name="fats" type="number" min="0" step="0.1" placeholder="г" required />
+            </div>
+
+            <div class="field">
+              <label for="carbs">Вуглеводи</label>
+              <input id="carbs" name="carbs" type="number" min="0" step="0.1" placeholder="г" required />
+            </div>
+          </div>
+
+          <button class="primary-btn" type="submit">Додати запис</button>
+        </form>
+      </aside>
+
+      <main class="content">
+        <section class="summary-panel" aria-label="Підсумок за день">
+          <article class="summary-card" style="--accent-color: var(--calories);">
+            <span class="label">Калорії</span>
+            <div class="value"><span id="total-calories">0</span><small>kcal</small></div>
+          </article>
+
+          <article class="summary-card" style="--accent-color: var(--protein);">
+            <span class="label">Білки</span>
+            <div class="value"><span id="total-proteins">0</span><small>г</small></div>
+          </article>
+
+          <article class="summary-card" style="--accent-color: var(--fat);">
+            <span class="label">Жири</span>
+            <div class="value"><span id="total-fats">0</span><small>г</small></div>
+          </article>
+
+          <article class="summary-card" style="--accent-color: var(--carb);">
+            <span class="label">Вуглеводи</span>
+            <div class="value"><span id="total-carbs">0</span><small>г</small></div>
+          </article>
+        </section>
+
+        <section class="entries-panel" aria-label="Записи за день">
+          <div class="entries-header">
+            <h2>Записи за день</h2>
+          </div>
+
+          <div id="entries-list" class="entries-list"></div>
+          <div id="empty-state" class="empty-state hidden">Немає записів для цього дня. Додайте перший прийом їжі.</div>
+        </section>
+      </main>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
